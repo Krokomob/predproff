@@ -1,16 +1,32 @@
-# This is a sample Python script.
+class studentiki:
+    fio=''
+    score=0
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+f=open('students.csv')
+students=[]
 
+j=0
+for i in f:
+    s = i.split(',')
+    if s[3][:-1]=='10':
+        students.append(studentiki())
+        students[j].fio=s[1]
+        students[j].score = int(s[4])
+        j+=1
+print(len(students))
+for i in range(len(students)):
+    j=i
+    t=students[i]
+    while j>0 and students[j-1].score<t.score:
+        students[j]=students[j-1]
+        j-=1
+    students[j]=t
+    print(students[j].fio)
+print('')
+s = students[-1].fio.split()
+print('1 место: '+s[1][:1]+'.'+s[2])
+s = students[-2].fio.split()
+print('2 место: '+s[1][:1]+'.'+s[2])
+s = students[-3].fio.split()
+print('3 место: '+s[1][:1]+'.'+s[2])
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
