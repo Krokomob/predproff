@@ -13,7 +13,7 @@ for i in f:
         students[j].fio=s[1]
         students[j].score = int(s[4])
         j+=1
-print(len(students))
+
 for i in range(len(students)):
     j=i
     t=students[i]
@@ -21,12 +21,13 @@ for i in range(len(students)):
         students[j]=students[j-1]
         j-=1
     students[j]=t
-    print(students[j].fio)
-print('')
-s = students[-1].fio.split()
-print('1 место: '+s[1][:1]+'.'+s[2])
-s = students[-2].fio.split()
-print('2 место: '+s[1][:1]+'.'+s[2])
-s = students[-3].fio.split()
-print('3 место: '+s[1][:1]+'.'+s[2])
+
+
+s = students[0].fio.split()
+
+print('1 место: '+s[1][:1]+'.'+s[0])
+s = students[1].fio.split()
+print('2 место: '+s[1][:1]+'.'+s[0])
+s = students[2].fio.split()
+print('3 место: '+s[1][:1]+'.'+s[0])
 
