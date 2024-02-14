@@ -1,1 +1,28 @@
-проверка работы
+def main():
+    """
+    Основная функция, ищет вакансии в фирме с максимальным заработком
+    """
+
+    f = open('vacancy.csv')
+    a = open('vacancy_new.csv', 'w')
+    q = []
+    s = []
+    f.readline()
+    d = []
+    for line in f:
+        line = line.split(';')
+        if line[4] not in q:
+            q.append(line[4])  # Добавление новой компании 
+            s.append(line[3])  # Добавление профессии в компании
+            d.append(line[0])  # Добавление размера зарплаты
+        else:
+            ind = q.index(line[4])
+            if int(d[ind]) < int(line[0]):  # Проверка размеров зарплат
+                d[ind] = line[0]  # Обновление зарплаты в компании
+                s[ind] = line[3]  # Обновление профессии в компании
+    a.write('company;role;Salary\n')
+    for i in range(len(q)):
+        a.write(q[i][:-2] + ';' + s[i] + ';' + d[i] + '\n')  # Запись новых данных в файл vacancy_new.csv
+
+
+main()
